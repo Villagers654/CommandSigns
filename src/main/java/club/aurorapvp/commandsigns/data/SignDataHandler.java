@@ -8,10 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.Location;
 import org.bukkit.block.sign.Side;
-import org.bukkit.block.sign.SignSide;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.checkerframework.checker.units.qual.C;
 
 public class SignDataHandler {
   private static final File FILE = new File(CommandSigns.INSTANCE.getDataFolder(), "/signs.yml");
@@ -35,10 +33,6 @@ public class SignDataHandler {
     return get().getStringList("signs." + sign.getName() + ".commands");
   }
 
-  public String getLine(int index) {
-    return get().getString("signs." + sign.getName() + ".line." + index);
-  }
-
   public void setCommands(List<String> commands) {
     get().set("signs." + sign.getName() + ".commands", commands);
     save();
@@ -52,7 +46,8 @@ public class SignDataHandler {
   public List<String> getLines() {
     List<String> lines = new ArrayList<>();
 
-    ConfigurationSection section = signsData.getConfigurationSection("signs." + sign.getName() + ".line.");
+    ConfigurationSection section =
+        signsData.getConfigurationSection("signs." + sign.getName() + ".line.");
 
     assert section != null;
     for (String index : section.getKeys(false)) {
@@ -83,9 +78,8 @@ public class SignDataHandler {
   public void create() {
     get().set("signs." + sign.getName() + ".location", sign.getLocation());
 
-    for (int i = 0; i < sign.getSign().getSide(Side.FRONT).getLines().length; i++) {
+    for (int i = 0; i < sign.getSign().getSide(Side.FRONT).getLines().length - 1; i++) {
       get().set("signs." + sign.getName() + ".line." + i, "");
-
     }
 
     save();

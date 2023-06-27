@@ -85,6 +85,6 @@ public class SignCommands extends BaseCommand {
       return;
     }
 
-    SignUtil.updateSignLine(sign, index, concatenatedText);
+    SignUtil.updateSignLine(sign, index - 1, concatenatedText);
   }
 }
