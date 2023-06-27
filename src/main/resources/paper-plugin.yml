@@ -1,0 +1,23 @@
+name: CommandSigns
+version: '${version}'
+main: club.aurorapvp.commandsigns.CommandSigns
+api-version: '1.20'
+authors: [Villagers654]
+description: Signs that can run commands
+website: aurorapvp.club
+
+commands:
+  commandsigns:
+    description: CommandSigns commands
+    permission: CommandSigns.admin
+    aliases:
+      - cs
+permissions:
+  commandsigns.admin:
+    description: Enables use of CommandSigns plugin commands
+    default: op
+
+dependencies:
+  server:
+    PlaceholderAPI:
+      required: true
