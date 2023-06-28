@@ -21,7 +21,11 @@ public class SignEvents implements Listener {
 
   @EventHandler
   public void onPlayerInteract(PlayerInteractEvent event) {
-    if (CommandSign.isSign(Objects.requireNonNull(event.getClickedBlock()).getState())) {
+    if (event.getClickedBlock() == null || event.getClickedBlock().getType().isAir()) {
+      return;
+    }
+
+    if (CommandSign.isSign(event.getClickedBlock().getState())) {
       for (String str : Objects.requireNonNull(
               CommandSign.getSign(event.getClickedBlock().getState()))
           .getCommands()) {
