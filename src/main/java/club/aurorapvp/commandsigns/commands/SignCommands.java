@@ -10,8 +10,6 @@ import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.Subcommand;
 import java.util.Arrays;
 import java.util.Objects;
-import org.bukkit.Location;
-import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
