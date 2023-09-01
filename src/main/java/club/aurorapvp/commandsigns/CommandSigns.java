@@ -5,12 +5,11 @@ import club.aurorapvp.commandsigns.config.Lang;
 import club.aurorapvp.commandsigns.events.EventManager;
 import club.aurorapvp.commandsigns.modules.CommandSign;
 import java.io.File;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class CommandSigns extends JavaPlugin {
 
-  public static Plugin INSTANCE;
+  public static CommandSigns INSTANCE;
   public static File DATA_FOLDER;
 
   @Override

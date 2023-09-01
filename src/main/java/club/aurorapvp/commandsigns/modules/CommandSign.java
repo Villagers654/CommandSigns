@@ -85,10 +85,6 @@ public class CommandSign {
     return commands;
   }
 
-  public void setLine(int index, String text) {
-    data.setLine(index, text);
-  }
-
   public void reload() {
     BlockState block = data.getLocation().getBlock().getState();
 

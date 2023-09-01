@@ -50,8 +50,8 @@ public class SignDataHandler {
         signsData.getConfigurationSection("signs." + sign.getName() + ".line.");
 
     assert section != null;
-    for (String index : section.getKeys(false)) {
-      lines.add(section.getString(index));
+    for (int i = 0; i <= 3; i++) {
+      lines.add(section.getString(String.valueOf(i)));
     }
 
     return lines;
@@ -78,7 +78,7 @@ public class SignDataHandler {
   public void create() {
     get().set("signs." + sign.getName() + ".location", sign.getLocation());
 
-    for (int i = 0; i < sign.getSign().getSide(Side.FRONT).getLines().length - 1; i++) {
+    for (int i = 0; i < 3; i++) {
       get().set("signs." + sign.getName() + ".line." + i, "");
     }
 

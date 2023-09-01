@@ -1,22 +1,21 @@
 package club.aurorapvp.commandsigns.util;
 
-import club.aurorapvp.commandsigns.modules.CommandSign;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import org.bukkit.Bukkit;
 import org.bukkit.block.Sign;
 import org.bukkit.block.sign.Side;
+import org.bukkit.entity.Player;
 
 public class SignUtil {
-  public static void updateSignLine(Sign sign, int index, String text) {
-    Objects.requireNonNull(CommandSign.getSign(sign)).setLine(index, text);
 
+  public static void updateSignLine(Sign sign, int index, String text) {
     String parsedText = PlaceholderAPI.setPlaceholders(null, text);
 
-    MiniMessage miniMessage = MiniMessage.miniMessage();
-    Component component = miniMessage.deserialize(parsedText);
+    Component component = MiniMessage.miniMessage().deserialize(parsedText);
 
     sign.getSide(Side.FRONT).line(index - 1, component);
 
@@ -24,14 +23,16 @@ public class SignUtil {
   }
 
   public static void updateSignLines(Sign sign, List<String> lines) {
-    for (int i = 0; i < lines.size(); i++) {
-      String parsedText = PlaceholderAPI.setPlaceholders(null, lines.get(i));
+    List<Component> components = new ArrayList<>();
 
-      MiniMessage miniMessage = MiniMessage.miniMessage();
-      Component component = miniMessage.deserialize(parsedText);
+    for (String line : lines) {
+      String parsedText = PlaceholderAPI.setPlaceholders(null, line);
 
-      sign.getSide(Side.FRONT).line(i, component);
+      components.add(MiniMessage.miniMessage().deserialize(parsedText));
     }
-    sign.update();
+
+    for (Player player : Bukkit.getOnlinePlayers()) {
+      player.sendSignChange(sign.getLocation(), components);
+    }
   }
 }
