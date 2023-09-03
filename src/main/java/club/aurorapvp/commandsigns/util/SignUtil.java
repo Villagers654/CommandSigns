@@ -17,7 +17,7 @@ public class SignUtil {
 
     Component component = MiniMessage.miniMessage().deserialize(parsedText);
 
-    sign.getSide(Side.FRONT).line(index - 1, component);
+    sign.getSide(Side.FRONT).line(index, component);
 
     sign.update();
   }
