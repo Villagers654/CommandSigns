@@ -78,7 +78,7 @@ public class SignDataHandler {
   public void create() {
     get().set("signs." + sign.getName() + ".location", sign.getLocation());
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i <= 3; i++) {
       get().set("signs." + sign.getName() + ".line." + i, "");
     }
 
