@@ -16,6 +16,7 @@ import org.bukkit.entity.Player;
 
 @CommandAlias("commandsigns|cs")
 public class SignCommands extends BaseCommand {
+
   @Subcommand("create")
   @CommandPermission("commandsigns.admin")
   @Description("Creates a command sign")
@@ -84,5 +85,6 @@ public class SignCommands extends BaseCommand {
     }
 
     SignUtil.updateSignLine(sign, index, concatenatedText);
+    Objects.requireNonNull(CommandSign.getSign(sign)).setLine(index, concatenatedText);
   }
 }

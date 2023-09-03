@@ -24,6 +24,7 @@ public class CommandSign {
   private static Player signEditor;
   private static boolean signEdited;
   private final List<String> commands = new ArrayList<>();
+  private final List<String> lines = new ArrayList<>();
   private Sign commandSign;
   private final SignDataHandler data;
   private final String name;
@@ -94,6 +95,7 @@ public class CommandSign {
       throw new IllegalStateException("CommandSign must be a sign");
     }
 
+    this.lines.addAll(data.getLines());
     this.commands.addAll(data.getCommands());
   }
 
@@ -118,9 +120,12 @@ public class CommandSign {
     p.sendMessage(Lang.getComponent("add-command"));
   }
 
-  public void updateLines() {
-    List<String> lines = data.getLines();
+  public void setLine(int index, String newLine) {
+    data.setLine(index, newLine);
+    this.reload();
+  }
 
+  public void updateLines() {
     SignUtil.updateSignLines(commandSign, lines);
   }
 
