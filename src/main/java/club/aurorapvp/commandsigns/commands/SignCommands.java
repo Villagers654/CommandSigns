@@ -87,4 +87,12 @@ public class SignCommands extends BaseCommand {
     SignUtil.updateSignLine(sign, index, concatenatedText);
     Objects.requireNonNull(CommandSign.getSign(sign)).setLine(index, concatenatedText);
   }
+
+  @Subcommand("reload")
+  @CommandPermission("commandsigns.admin")
+  @Description("Reloads all commands")
+  @SuppressWarnings("unused")
+  public void onReload() {
+    Lang.reload();
+  }
 }

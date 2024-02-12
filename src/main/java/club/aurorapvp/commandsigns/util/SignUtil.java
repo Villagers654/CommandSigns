@@ -31,8 +31,13 @@ public class SignUtil {
       components.add(MiniMessage.miniMessage().deserialize(parsedText));
     }
 
+    for (int i = 0; i < components.size(); i++) {
+      sign.getSide(Side.FRONT).line(i, components.get(i));
+    }
+
     for (Player player : Bukkit.getOnlinePlayers()) {
-      player.sendSignChange(sign.getLocation(), components);
+      player.sendBlockUpdate(sign.getLocation(), sign);
     }
   }
+
 }
