@@ -1,5 +1,6 @@
 package club.aurorapvp.commandsigns.util;
 
+import club.aurorapvp.commandsigns.CommandSigns;
 import java.util.ArrayList;
 import java.util.List;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -26,9 +27,11 @@ public class SignUtil {
     List<Component> components = new ArrayList<>();
 
     for (String line : lines) {
-      String parsedText = PlaceholderAPI.setPlaceholders(null, line);
+      if (CommandSigns.isPlaceholderApiInstalled()) {
+        line = PlaceholderAPI.setPlaceholders(null, line);
+      }
 
-      components.add(MiniMessage.miniMessage().deserialize(parsedText));
+      components.add(MiniMessage.miniMessage().deserialize(line));
     }
 
     for (int i = 0; i < components.size(); i++) {

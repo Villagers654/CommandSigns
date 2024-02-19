@@ -13,4 +13,4 @@ permissions:
 dependencies:
   server:
     PlaceholderAPI:
-      required: true
+      required: false

@@ -9,6 +9,6 @@ public class CommandManager {
 
   public static void init() {
     MANAGER.registerCommand(new SignCommands());
-    MANAGER.registerCommand(new ReloadCommand());
+    MANAGER.registerCommand(new PluginCommands());
   }
 }

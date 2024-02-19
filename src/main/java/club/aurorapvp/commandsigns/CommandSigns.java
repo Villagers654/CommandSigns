@@ -4,12 +4,14 @@ import club.aurorapvp.commandsigns.commands.CommandManager;
 import club.aurorapvp.commandsigns.config.Lang;
 import club.aurorapvp.commandsigns.events.EventManager;
 import club.aurorapvp.commandsigns.modules.CommandSign;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class CommandSigns extends JavaPlugin {
 
   private static CommandSigns INSTANCE;
   private Lang lang;
+  private static boolean placeholderApiInstalled;
 
   public static CommandSigns getInstance() {
     return INSTANCE;
@@ -19,6 +21,10 @@ public final class CommandSigns extends JavaPlugin {
     return lang;
   }
 
+  public static boolean isPlaceholderApiInstalled() {
+    return placeholderApiInstalled;
+  }
+
   @Override
   public void onEnable() {
     // Plugin startup logic
@@ -26,6 +32,11 @@ public final class CommandSigns extends JavaPlugin {
 
     // Initialize lang file
     lang = new Lang();
+
+    if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null
+        && this.getConfig().getBoolean("optional-plugins.placeholderapi-compatibility")) {
+      placeholderApiInstalled = true;
+    }
 
     CommandManager.init();
     EventManager.init();

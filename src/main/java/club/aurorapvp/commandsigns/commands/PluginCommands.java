@@ -9,7 +9,7 @@ import co.aikar.commands.annotation.Description;
 import co.aikar.commands.annotation.Subcommand;
 
 @CommandAlias("commandsigns|cs")
-public class ReloadCommand extends BaseCommand {
+public class PluginCommands extends BaseCommand {
 
   @Subcommand("reload")
   @CommandPermission("commandsigns.admin")
