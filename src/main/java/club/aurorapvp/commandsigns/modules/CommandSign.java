@@ -1,7 +1,6 @@
 package club.aurorapvp.commandsigns.modules;
 
 import club.aurorapvp.commandsigns.CommandSigns;
-import club.aurorapvp.commandsigns.config.Lang;
 import club.aurorapvp.commandsigns.data.SignDataHandler;
 import club.aurorapvp.commandsigns.util.SignUtil;
 import java.io.File;
@@ -10,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.logging.Level;
 import org.bukkit.Location;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.Sign;
@@ -19,6 +19,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class CommandSign {
+
   private static final Set<CommandSign> COMMAND_SIGNS = new HashSet<>();
   private static CommandSign unfinishedSign;
   private static Player signEditor;
@@ -61,9 +62,17 @@ public class CommandSign {
           sign.updateLines();
         }
       }
-    }.runTaskTimer(CommandSigns.INSTANCE, 0L, 20L);
+    }.runTaskTimer(CommandSigns.getInstance(), 0L, 20L);
 
-    CommandSigns.INSTANCE.getLogger().info("All signs loaded!");
+    CommandSigns.getInstance().getLogger().info("All signs loaded!");
+  }
+
+  public static void reloadAll() {
+    for (CommandSign sign : COMMAND_SIGNS) {
+      sign.reload();
+    }
+
+    CommandSigns.getInstance().getLogger().log(Level.INFO, "All signs reloaded!");
   }
 
   public boolean exists() {
