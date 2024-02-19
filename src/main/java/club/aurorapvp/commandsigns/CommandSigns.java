@@ -4,22 +4,30 @@ import club.aurorapvp.commandsigns.commands.CommandManager;
 import club.aurorapvp.commandsigns.config.Lang;
 import club.aurorapvp.commandsigns.events.EventManager;
 import club.aurorapvp.commandsigns.modules.CommandSign;
-import java.io.File;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class CommandSigns extends JavaPlugin {
 
-  public static CommandSigns INSTANCE;
-  public static File DATA_FOLDER;
+  private static CommandSigns INSTANCE;
+  private Lang lang;
+
+  public static CommandSigns getInstance() {
+    return INSTANCE;
+  }
+
+  public Lang getLang() {
+    return lang;
+  }
 
   @Override
   public void onEnable() {
     // Plugin startup logic
     INSTANCE = this;
-    DATA_FOLDER = this.getDataFolder();
+
+    // Initialize lang file
+    lang = new Lang();
 
     CommandManager.init();
-    Lang.init();
     EventManager.init();
     CommandSign.init();
   }

@@ -42,7 +42,7 @@ public class CommandSign {
   }
 
   public static void init() {
-    File file = new File(CommandSigns.INSTANCE.getDataFolder(), "/signs.yml");
+    File file = new File(CommandSigns.getInstance().getDataFolder(), "/signs.yml");
     YamlConfiguration framesData = YamlConfiguration.loadConfiguration(file);
     ConfigurationSection section = framesData.getConfigurationSection("signs");
 
@@ -109,7 +109,7 @@ public class CommandSign {
 
     this.data.delete();
 
-    p.sendMessage(Lang.getComponent("removed"));
+    p.sendMessage(CommandSigns.getInstance().getLang().getComponent("removed"));
   }
 
   public void edit(Player p) {
@@ -117,7 +117,7 @@ public class CommandSign {
     signEdited = true;
     signEditor = p;
 
-    p.sendMessage(Lang.getComponent("add-command"));
+    p.sendMessage(CommandSigns.getInstance().getLang().getComponent("add-command"));
   }
 
   public void setLine(int index, String newLine) {
@@ -138,10 +138,10 @@ public class CommandSign {
       data.setCommands(commands);
       data.save();
 
-      p.sendMessage(Lang.getComponent("commands-saved"));
+      p.sendMessage(CommandSigns.getInstance().getLang().getComponent("commands-saved"));
     } else {
       commands.add(str);
-      p.sendMessage(Lang.getComponent("command-added"));
+      p.sendMessage(CommandSigns.getInstance().getLang().getComponent("command-added"));
     }
   }
 

@@ -11,7 +11,9 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public class SignDataHandler {
-  private static final File FILE = new File(CommandSigns.INSTANCE.getDataFolder(), "/signs.yml");
+
+  private static final File FILE = new File(CommandSigns.getInstance().getDataFolder(),
+      "/signs.yml");
   private static final YamlConfiguration
       signsData = YamlConfiguration.loadConfiguration(FILE);
   private final CommandSign sign;
@@ -65,7 +67,7 @@ public class SignDataHandler {
       }
       get().save(FILE);
     } catch (IOException e) {
-      CommandSigns.INSTANCE.getLogger().severe("Failed to save sign data");
+      CommandSigns.getInstance().getLogger().severe("Failed to save sign data");
     }
   }
 

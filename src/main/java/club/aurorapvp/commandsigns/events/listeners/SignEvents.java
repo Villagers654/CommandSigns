@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class SignEvents implements Listener {
+
   @EventHandler
   public void onPlayerChat(AsyncChatEvent event) {
     if (CommandSign.isEditor(event.getPlayer()) && CommandSign.isSignBeingEdited()) {

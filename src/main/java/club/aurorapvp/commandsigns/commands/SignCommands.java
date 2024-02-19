@@ -1,6 +1,6 @@
 package club.aurorapvp.commandsigns.commands;
 
-import club.aurorapvp.commandsigns.config.Lang;
+import club.aurorapvp.commandsigns.CommandSigns;
 import club.aurorapvp.commandsigns.modules.CommandSign;
 import club.aurorapvp.commandsigns.util.SignUtil;
 import co.aikar.commands.BaseCommand;
@@ -25,7 +25,7 @@ public class SignCommands extends BaseCommand {
     BlockState block = Objects.requireNonNull(p.getTargetBlockExact(5)).getState();
 
     if (!(block instanceof Sign)) {
-      p.sendMessage(Lang.getComponent("not-a-sign"));
+      p.sendMessage(CommandSigns.getInstance().getLang().getComponent("not-a-sign"));
       return;
     }
 
@@ -44,7 +44,7 @@ public class SignCommands extends BaseCommand {
     BlockState block = Objects.requireNonNull(p.getTargetBlockExact(5)).getState();
 
     if (!(block instanceof Sign sign)) {
-      p.sendMessage(Lang.getComponent("not-a-sign"));
+      p.sendMessage(CommandSigns.getInstance().getLang().getComponent("not-a-sign"));
       return;
     }
 
@@ -59,7 +59,7 @@ public class SignCommands extends BaseCommand {
     BlockState block = Objects.requireNonNull(p.getTargetBlockExact(5)).getState();
 
     if (!(block instanceof Sign sign)) {
-      p.sendMessage(Lang.getComponent("not-a-sign"));
+      p.sendMessage(CommandSigns.getInstance().getLang().getComponent("not-a-sign"));
       return;
     }
 
@@ -80,7 +80,7 @@ public class SignCommands extends BaseCommand {
     BlockState block = Objects.requireNonNull(p.getTargetBlockExact(5)).getState();
 
     if (!(block instanceof Sign sign)) {
-      p.sendMessage(Lang.getComponent("not-a-sign"));
+      p.sendMessage(CommandSigns.getInstance().getLang().getComponent("not-a-sign"));
       return;
     }
 
@@ -93,6 +93,6 @@ public class SignCommands extends BaseCommand {
   @Description("Reloads all commands")
   @SuppressWarnings("unused")
   public void onReload() {
-    Lang.reload();
+    CommandSigns.getInstance().getLang().reload();
   }
 }
