@@ -40,7 +40,7 @@ public class Lang {
     DEFAULTS.put("command-added", "prefix <gradient:#FFAA00:#FF55FF>Command added!");
     DEFAULTS.put("commands-saved", "prefix <gradient:#FFAA00:#FF55FF>All commands saved!");
     DEFAULTS.put("add-command",
-        "prefix <gradient:#FFAA00:#FF55FF>Type the commands you want to add to the sign in chat. Exclude the '/'");
+        "prefix <gradient:#FFAA00:#FF55FF>Type the commands you want to add to the sign in chat. Exclude the '/'. Say 'stop' to stop");
 
     for (String path : DEFAULTS.keySet()) {
       if (!getYaml().contains(path) || getYaml().getString(path) == null) {

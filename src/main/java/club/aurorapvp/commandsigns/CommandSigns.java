@@ -33,8 +33,7 @@ public final class CommandSigns extends JavaPlugin {
     // Initialize lang file
     lang = new Lang();
 
-    if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null
-        && this.getConfig().getBoolean("optional-plugins.placeholderapi-compatibility")) {
+    if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
       placeholderApiInstalled = true;
     }
 

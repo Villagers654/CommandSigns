@@ -26,7 +26,7 @@ public class CommandSign {
   private static boolean signEdited;
   private final List<String> commands = new ArrayList<>();
   private final List<String> lines = new ArrayList<>();
-  private Sign commandSign;
+  private Sign sign;
   private final SignDataHandler data;
   private final String name;
 
@@ -84,11 +84,11 @@ public class CommandSign {
   }
 
   public Location getLocation() {
-    return commandSign.getLocation();
+    return sign.getLocation();
   }
 
   public Sign getSign() {
-    return commandSign;
+    return sign;
   }
 
   public List<String> getCommands() {
@@ -99,7 +99,7 @@ public class CommandSign {
     BlockState block = data.getLocation().getBlock().getState();
 
     if (block instanceof Sign sign) {
-      this.commandSign = sign;
+      this.sign = sign;
     } else {
       throw new IllegalStateException("CommandSign must be a sign");
     }
@@ -109,7 +109,7 @@ public class CommandSign {
   }
 
   public void create(Player p) {
-    this.commandSign = (Sign) Objects.requireNonNull(p.getTargetBlockExact(5)).getState();
+    this.sign = (Sign) Objects.requireNonNull(p.getTargetBlockExact(5)).getState();
     this.data.create();
   }
 
@@ -135,7 +135,7 @@ public class CommandSign {
   }
 
   public void updateLines() {
-    SignUtil.updateSignLines(commandSign, lines);
+    SignUtil.updateSignLines(sign, lines);
   }
 
   public void createCommandList(Player p, String str) {

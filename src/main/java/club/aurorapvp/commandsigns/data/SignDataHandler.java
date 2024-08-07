@@ -51,7 +51,7 @@ public class SignDataHandler {
         signsData.getConfigurationSection("signs." + sign.getName() + ".line.");
 
     assert section != null;
-    for (int i = 0; i <= 3; i++) {
+    for (int i = 0; i < 4; i++) {
       lines.add(section.getString(String.valueOf(i)));
     }
 
